@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::section})}">
+<head>
+  <title>Students</title>
+</head>
+<body>
+<section>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h4 m-0">Students</h1>
+    <a class="btn btn-success" th:href="@{/students/new}">+ New Student</a>
+  </div>
+
+  <table class="table table-striped align-middle">
+    <thead>
+    <tr>
+      <th style="width: 80px;">ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Major</th>
+      <th style="width: 160px;"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s : ${students}">
+      <td th:text="${s.id}">1</td>
+      <td th:text="${s.name}">Jane Doe</td>
+      <td th:text="${s.email}">jane@example.com</td>
+      <td th:text="${s.major}">CS</td>
+      <td class="text-end">
+        <a class="btn btn-sm btn-outline-primary me-1"
+           th:href="@{/students/{id}/edit(id=${s.id})}">Edit</a>
+        <form th:action="@{/students/{id}/delete(id=${s.id})}" method="post" class="d-inline">
+          <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(students)}">
+      <td colspan="5" class="text-center text-muted">No students yet.</td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+</body>
+</html>

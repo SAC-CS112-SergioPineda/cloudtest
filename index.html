@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::section})}">
+<head>
+  <title>Home</title>
+</head>
+<body>
+<section>
+  <h1 class="h3 mb-3">Welcome</h1>
+  <p class="mb-4">This is your cloud test app.</p>
+  <a class="btn btn-primary" th:href="@{/students}">Manage Students</a>
+</section>
+</body>
+</html>

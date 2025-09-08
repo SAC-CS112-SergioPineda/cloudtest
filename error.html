@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::section})}">
+<head>
+  <title>Error</title>
+</head>
+<body>
+<section>
+  <div class="alert alert-danger d-flex align-items-center" role="alert">
+    <div>
+      <strong>Something went wrong.</strong>
+      <span th:text="${message} ?: 'Please try again.'"></span>
+    </div>
+  </div>
+  <a class="btn btn-primary" th:href="@{/}">Go home</a>
+</section>
+</body>
+</html>
